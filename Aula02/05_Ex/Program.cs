@@ -2,8 +2,18 @@
 
 /*
  * 5) Construa um programa console para receber 5 dados fornecidos por um usuário,
- * estas dados podem ser dos tipos (int, double, char, string). Voce deve recer os dados
- * e armazer em um vetor ou lista. Logo em seguida o prgrama deve exibir na saida do console a listagem dos dados recebidos.
+ * estas dados podem ser dos tipos (int, double, char, string). Voce deve receber os dados
+ * e armazer em um vetor ou lista. Logo em seguida o programa deve exibir na saida do console a listagem dos dados recebidos.
  */
 
-Console.WriteLine("Hello, World!");
+var names = new List<string>();
+
+for(int i = 0; i < 5; i++)
+{
+    names.Add(Console.ReadLine());
+}
+
+foreach (var name in names)
+{
+    Console.WriteLine($"My name is {name}.");
+}
