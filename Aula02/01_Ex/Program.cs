@@ -8,9 +8,37 @@
  * double
  * decimal
  * 
- * 1.1) Atribua valores iniciais para as variáveis em um primeiro teste
- * 1.2) Em um segundo teste receba valores informados por um usuário
- * 1.3) Depois imprima os resultados das variáveis na saida do console
+ * a) Atribua valores iniciais para as variáveis em um primeiro teste
 */
 
-Console.WriteLine("Hello, World!");
+short a = 0;
+int b = 0;
+long c = 0;
+float f = 0.0f;
+double d = 0.0;
+decimal e = 0.0m;
+
+Console.WriteLine(a);
+Console.WriteLine(b);
+Console.WriteLine(c);
+Console.WriteLine(f);
+Console.WriteLine(d);
+Console.WriteLine(e);
+
+// b) Em um segundo teste receba valores informados por um usuário
+
+a = short.Parse(Console.ReadLine());
+b = int.Parse(Console.ReadLine());
+c = long.Parse(Console.ReadLine()); 
+f = float.Parse(Console.ReadLine());
+d = double.Parse(Console.ReadLine());
+e = decimal.Parse(Console.ReadLine());
+
+// c) Depois imprima os resultados das variáveis na saida do console
+
+Console.WriteLine(a);
+Console.WriteLine(b);
+Console.WriteLine(c);
+Console.WriteLine(f);
+Console.WriteLine(d);
+Console.WriteLine(e);
