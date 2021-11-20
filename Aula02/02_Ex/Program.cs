@@ -9,7 +9,6 @@
  * 2.1) Faça um programa console C# para fazer este teste, e printar na tela o resultado de duas variáveis uma byte e outra sbyte com valores superiores ao limites acima apresentados.
  * 
  * Faça usando tres formas que são:
- * 
 */
 
 // a) Atribua diretamente um valor acima do limite para as variáveis.
