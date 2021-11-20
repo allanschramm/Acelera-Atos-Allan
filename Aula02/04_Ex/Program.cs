@@ -5,4 +5,15 @@
  * Caso não encontre imprima "não encontrei a letra G".
 */
 
-Console.WriteLine("Hello, World!");
+string a = Console.ReadLine();
+
+if (a.ToLower().Contains('g'))
+{
+    Console.WriteLine("Encontrei a letra 'G'!");
+}
+else
+{
+    Console.WriteLine("Não encontrei a letra 'G'!");
+}
+
+
