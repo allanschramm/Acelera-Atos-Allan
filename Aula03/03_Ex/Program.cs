@@ -9,9 +9,9 @@
 
 enum ESituacaoAluno
 {
-	Aprovado = 1,
-	Reprovado = 2,
-	Recuperacao = 3
+	Aprovado,
+	Reprovado,
+	Recuperacao
 }
 
 // 3.2) A entrada dos dados deve ser um metodo da struct. 
@@ -20,10 +20,10 @@ struct Aluno
 {
     //Propriedades
     public string Nome;
-    public int Situacao;
+    public ESituacaoAluno Situacao;
     public double Nota;
 
-    public Aluno (string Nome, int Situacao, double Nota)
+    public Aluno (string Nome, ESituacaoAluno Situacao, double Nota)
     {
         this.Nome = Nome;
         this.Situacao = Situacao;
@@ -37,37 +37,66 @@ struct Aluno
     }
 }
 
-// 3.3) O programa deve receber a entrada de informações de 10 alunos, e ao termino imprimir na saida do console:
-// 3.4) Uma listagem contendo todos os dados de todos os alunos.
-// 3.5) A maior e a menor nota, e a média aritmetica das notas dos alunos. 
-// 3.6) Uma ultima listagem deve ser exibida onde os alunos serão exibidos juntamente com seu status que será calculado da seguinte forma:
-// a) Nota do aluno 3 pontos acima ou abaixo da media da turma ele é considerado em recuperação
-// b) Nota acima da média da turma+3 pontos aprovado
-// c) Nota abaixo da média da turma-3 pontos reprovado
+
 
 internal class Program
 {
     static void Main(string[] args)
     {
-        Aluno alu = new Aluno();
-        alu.Nome = "Ryu";
-        alu.Nota = 10;
+        // 3.3) O programa deve receber a entrada de informações de 10 alunos
 
-        Aluno alu2 = new Aluno();
-        alu2.Nome = "Ken";
-        alu2.Nota = 6;
+        Aluno[] arrAluno = new Aluno[10];
+        double somaNota = 0, mediaTurma;
 
-        Aluno alu3 = new Aluno();
-        alu3.Nome = "Blanka";
-        alu3.Nota = 2;
+        Console.WriteLine("\nSistema de Calculo de Media dos Alunos, você precisará digitar o nome e a nota de 10 alunos:\n");
 
-
-        List<Aluno> alunos = new List<Aluno>();
-        alunos.Add(alu);
-
-        foreach (var aluno in alunos)
+        for (int i = 0; i < arrAluno.Length; i++)
         {
-            aluno.Imp();
+            Console.WriteLine("\nDigite o nome do aluno: ");
+            arrAluno[i].Nome = Console.ReadLine();
+            Console.WriteLine("\nDigite a nota do aluno: ");
+            arrAluno[i].Nota = double.Parse(Console.ReadLine());
+
+            somaNota += arrAluno[i].Nota;
+        }
+
+        mediaTurma = somaNota / arrAluno.Length;
+
+        // 3.4) Uma listagem contendo todos os dados de todos os alunos.
+
+        for (int i = 0; i < arrAluno.Length; i++)
+        {
+            Console.WriteLine($"Nome: {arrAluno[i].Nome} | Nota: {arrAluno[i].Nota}");
+        }
+
+        // 3.5) A maior e a menor nota, e a média aritmetica das notas dos alunos. 
+
+        Console.WriteLine($"\nA soma das notas dos alunos é: {somaNota}");
+        Console.WriteLine($"\nA média dos alunos é: {mediaTurma}");
+
+        // 3.6) Uma ultima listagem deve ser exibida onde os alunos serão exibidos juntamente com seu status que será calculado da seguinte forma:
+        // a) Nota do aluno 3 pontos acima ou abaixo da media da turma ele é considerado em recuperação
+        // b) Nota acima da média da turma+3 pontos aprovado
+        // c) Nota abaixo da média da turma-3 pontos reprovado
+
+        Console.WriteLine("\nSituação dos alunos da turma: \n");
+
+        for (int i = 0; i < arrAluno.Length; i++)
+        {
+            if (arrAluno[i].Nota < (mediaTurma + 3) || arrAluno[i].Nota > (mediaTurma - 3))
+            {
+                arrAluno[i].Situacao = ESituacaoAluno.Recuperacao;
+            }
+            if (arrAluno[i].Nota > (mediaTurma + 3))
+            {
+                arrAluno[i].Situacao = ESituacaoAluno.Aprovado;
+            }
+            if (arrAluno[i].Nota < (mediaTurma - 3))
+            {
+                arrAluno[i].Situacao = ESituacaoAluno.Reprovado;
+            }
+
+            Console.WriteLine($"Aluno: {arrAluno[i].Nome} | Situação: {arrAluno[i].Situacao}");
         }
     }
 }
