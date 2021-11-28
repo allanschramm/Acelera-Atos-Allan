@@ -19,7 +19,7 @@ do
         {
             double resultado;
 
-            switch (operacao)
+        switch (operacao)
             {
                 case 1:
                     resultado = a + b;
