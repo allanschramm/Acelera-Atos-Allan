@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+
+
 /* 4) Evoluir o programa console (3) desta lista para permitir a busca dos dados de um aluno pelo nome.
  * 4.1) Construir um menu para acionar as funcioalidades do programa. (Lembre - se de utilizar metodos para segmentar as responsabilidades do programa)
  * Que seriam:
@@ -12,6 +14,7 @@
 
 enum ESituacaoAluno
 {
+    NaoAvaliado,
 	Aprovado,
 	Reprovado,
 	Recuperacao
@@ -23,30 +26,38 @@ struct Aluno
 {
     //Propriedades
     public string Nome;
-    public ESituacaoAluno Situacao;
     public double Nota;
+    public ESituacaoAluno Situacao;
+    public DateTime DataRegistro;
 
-    public Aluno (string Nome, ESituacaoAluno Situacao, double Nota)
+    public Aluno (string Nome, ESituacaoAluno Situacao, double Nota, DateTime DataRegistro)
     {
         this.Nome = Nome;
         this.Situacao = Situacao;
         this.Nota = Nota;
+        this.DataRegistro = DateTime.Now;
     }
 
     //Metodos
     public void Imp()
     {
-        Console.WriteLine($"Nome = {Nome} Nota = {Nota} Situação = {Situacao}");
+        Console.WriteLine($"Nome = {Nome} Nota = {Nota} Situação = {Situacao} Registro = {DataRegistro}");
     }
+
+
 }
+
+
 
 internal class Program
 {
+    const int NUM_ALUNOS = 3;
+    static Aluno[] arrAluno = new Aluno[NUM_ALUNOS];
+
     static void Main(string[] args)
     {
         // 3.3) O programa deve receber a entrada de informações de 10 alunos
 
-        Aluno[] arrAluno = new Aluno[10];
         double somaNota = 0, mediaTurma;
 
         Console.WriteLine("\nSistema de Calculo de Media dos Alunos, você precisará digitar o nome e a nota de 10 alunos:\n");
@@ -67,7 +78,7 @@ internal class Program
 
         for (int i = 0; i < arrAluno.Length; i++)
         {
-            Console.WriteLine($"Nome: {arrAluno[i].Nome} | Nota: {arrAluno[i].Nota}");
+            arrAluno[i].Imp();
         }
 
         // 3.5) A maior e a menor nota, e a média aritmetica das notas dos alunos. 
@@ -97,7 +108,7 @@ internal class Program
                 arrAluno[i].Situacao = ESituacaoAluno.Reprovado;
             }
 
-            Console.WriteLine($"Aluno: {arrAluno[i].Nome} | Situação: {arrAluno[i].Situacao}");
+            arrAluno[i].Imp();
         }
     }
 }
