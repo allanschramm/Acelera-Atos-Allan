@@ -13,7 +13,8 @@ namespace _04_Ex
         public double Nota;
         public ESituacaoAluno Situacao;
         public DateTime DataRegistro;
-
+        public double mediaNota { get; set; }
+        public static double totalNota { get; private set; }
         public static int TotalDeAlunos { get; private set; }
 
         public Aluno()
@@ -26,6 +27,7 @@ namespace _04_Ex
 
             DataRegistro = DateTime.Now;
 
+            totalNota += Nota;
             TotalDeAlunos++;
         }
         

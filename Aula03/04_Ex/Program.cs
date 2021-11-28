@@ -32,6 +32,8 @@ internal class Program
         return int.Parse(Console.ReadLine());
     }
 
+    
+
     static void Main(string[] args)
     {
         /*
@@ -45,6 +47,28 @@ internal class Program
         */
 
         List<Aluno> alunos = new List<Aluno>();
+
+        double CalcularMedia()
+        {
+            double media = Aluno.totalNota / Aluno.TotalDeAlunos;
+
+            foreach (Aluno aAluno in alunos)
+            {
+                if (aAluno.Nota < (media + 3) || aAluno.Nota > (media - 3))
+                {
+                    aAluno.Situacao = ESituacaoAluno.Recuperacao;
+                }
+                if (aAluno.Nota > (media + 3))
+                {
+                    aAluno.Situacao = ESituacaoAluno.Aprovado;
+                }
+                if (aAluno.Nota < (media - 3))
+                {
+                    aAluno.Situacao = ESituacaoAluno.Reprovado;
+                }
+            }
+            return media;
+        }
 
         int opcao = ChamarMenu();
 
@@ -71,17 +95,21 @@ internal class Program
                     break;
 
                 case 3:
-                    Console.WriteLine($"\nCalcular Media");
+                    Console.WriteLine($"\nA media da turma é: {CalcularMedia()}");
+                    foreach (Aluno aAluno in alunos)
+                    {
+                        aAluno.Imp();
+                    }
                     Console.WriteLine("\nPressione qualquer tecla para voltar...");
                     Console.ReadLine();
-                    ChamarMenu();
+                    opcao = ChamarMenu();
                     break;
 
                 case 4:
                     Console.WriteLine($"\nPesquisar Aluno");
                     Console.WriteLine("\nPressione qualquer tecla para voltar...");
                     Console.ReadLine();
-                    ChamarMenu();
+                    opcao = ChamarMenu();
                     break;
 
                 case 5:
@@ -92,7 +120,7 @@ internal class Program
                     Console.WriteLine("Opção invalida!");
                     Console.WriteLine("\nPressione qualquer tecla para voltar...");
                     Console.ReadLine();
-                    ChamarMenu();
+                    opcao = ChamarMenu();
                     break;
 
                 
