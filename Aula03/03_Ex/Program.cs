@@ -66,7 +66,7 @@ internal class Program
 
         for (int i = 0; i < arrAluno.Length; i++)
         {
-            Console.WriteLine($"Nome: {arrAluno[i].Nome} | Nota: {arrAluno[i].Nota}");
+            arrAluno[i].Imp();
         }
 
         // 3.5) A maior e a menor nota, e a média aritmetica das notas dos alunos. 
@@ -96,7 +96,7 @@ internal class Program
                 arrAluno[i].Situacao = ESituacaoAluno.Reprovado;
             }
 
-            Console.WriteLine($"Aluno: {arrAluno[i].Nome} | Situação: {arrAluno[i].Situacao}");
+            arrAluno[i].Imp();
         }
     }
 }
