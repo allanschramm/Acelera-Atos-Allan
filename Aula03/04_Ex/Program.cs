@@ -47,6 +47,7 @@ internal class Program
         */
 
         List<Aluno> alunos = new List<Aluno>();
+        string busca;
 
         double CalcularMedia()
         {
@@ -107,6 +108,17 @@ internal class Program
 
                 case 4:
                     Console.WriteLine($"\nPesquisar Aluno");
+                    busca = Console.ReadLine();
+                    foreach (Aluno aAluno in alunos)
+                    {
+                        if (aAluno.Nome.Contains(busca))
+                        {
+                            aAluno.Imp();
+                        }
+                        else
+                        {                            
+                        }
+                    }
                     Console.WriteLine("\nPressione qualquer tecla para voltar...");
                     Console.ReadLine();
                     opcao = ChamarMenu();
@@ -122,9 +134,7 @@ internal class Program
                     Console.ReadLine();
                     opcao = ChamarMenu();
                     break;
-
-                
-                
+            
             }
 
         }
