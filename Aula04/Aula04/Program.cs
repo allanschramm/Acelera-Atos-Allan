@@ -17,6 +17,7 @@
 // 4) Evoluir o programa console (3) desta lista para permitir a busca dos dados de um aluno pelo nome.
 
 using _01_Ex;
+using System.Xml.Serialization;
 
 enum ESituacaoAluno
 {
