@@ -5,14 +5,9 @@
  * A informação da coleção de alunos deve ser armazenada em um arquivo TXT.
  * Onde cada linha do arquivo irá representar um registro, e os campos devem ser separados por (;).
  * Uma função para ler os dados do arquivo e armazenar na lista de alunos em memória também deve ser adicionada ao menu.
- * 
- * 
- * 5) Evoluir o programa (4) para incluir na struct que define o aluno a data do cadastro, usando um tipo datetime.
- * 
- * a) A informação da data deve ser recuperada do sistema no exato momento que o cadastro esta sendo realizado.
- * b) E deve ser exibida no relatorio onde todas as informações dos alunos são exibidas.
- * 
- */
+*/
+
+
 
 // 4) Evoluir o programa console (3) desta lista para permitir a busca dos dados de um aluno pelo nome.
 
