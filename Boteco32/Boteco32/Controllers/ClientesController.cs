@@ -78,7 +78,7 @@ namespace Boteco32.Controllers
                         {
                             Nome = clienteViewModel.Nome,
                             Email = clienteViewModel.Email,
-                            Senha = clienteViewModel.Senha,
+                            Senha = Criptografia.HashPassword(clienteViewModel.Senha),
                             Endereco = clienteViewModel.Endereco,
                             Telefone = clienteViewModel.Telefone
                         };

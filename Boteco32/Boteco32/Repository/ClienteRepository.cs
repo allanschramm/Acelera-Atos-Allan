@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Boteco32.Models;
 using Boteco32.Services;
+using Boteco32.Util;
 using Boteco32.ViewModels.ClienteViewModel;
 using Microsoft.EntityFrameworkCore;
 
@@ -41,11 +42,17 @@ namespace Boteco32.Repository
             {
                 using (var data = new Boteco32Context(_context))
                 {
-                    return await data.Clientes.
-                          Where(u => u.Email.Equals(email) && u.Senha.Equals(senha))
+                    var user = await data.Clientes.
+                          Where(u => u.Email.Equals(email))
                           .AsNoTracking()
-                          .AnyAsync();
+                          .FirstOrDefaultAsync();
 
+                    if (user == null)
+                    {
+                        return false;
+                    }
+
+                    return Criptografia.VerifyPassword(user.Senha, senha);
                 }
             }
             catch (Exception)
