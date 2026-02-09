@@ -54,7 +54,7 @@ namespace Boteco32.Services
 
             novoPedido.Data = DateTime.Now.ToString();
             novoPedido.ValorTotal = total;
-            novoPedido.Numero = _pedidoRepository.GerarNumeroPedido() + 1;
+            novoPedido.Numero = _pedidoRepository.GerarNumeroPedido();
             novoPedido.IdCliente = idCliente;
 
             Pedido resultado = await _pedidoRepository.AdicionarPedido(novoPedido);

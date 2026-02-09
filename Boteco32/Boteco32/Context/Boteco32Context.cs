@@ -113,6 +113,8 @@ namespace Boteco32.Models
 
                 entity.Property(e => e.Numero).HasColumnName("numero");
 
+                entity.HasIndex(e => e.Numero, "IX_Pedido_numero");
+
                 entity.Property(e => e.ValorTotal)
                     .HasColumnType("decimal(10, 2)")
                     .HasColumnName("valorTotal");
