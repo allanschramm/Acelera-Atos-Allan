@@ -46,8 +46,7 @@ namespace Boteco32.Repository
         {
             using (var data = new Boteco32Context(_context))
             {
-              int quant =  data.Set<Pedido>().Count();
-              return quant;
+                return (data.Set<Pedido>().Max(p => (int?)p.Numero) ?? 0) + 1;
             }                   
         }
 
